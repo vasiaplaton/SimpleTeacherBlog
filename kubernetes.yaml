@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teacher-app
+  name: teacher-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teacher-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: teacher-app
+    spec:
+      containers:
+      - image: registry.gitlab.com/vasiaplaton/teacher/docker:main
+        name: docker
+        resources: {}
+        imagePullPolicy: Always
+status: {}

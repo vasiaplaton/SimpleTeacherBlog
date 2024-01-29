@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Teachers site</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Добавление дополнительного статического CSS файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+<div class="topnav">
+    <div class="top-header"> The Teachers blog</div>
+    {% if user.is_authenticated %}
+    <div class="top-user">User: {{ user.get_username }}</div>
+    <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+    {% endif %}
+
+    {% url 'index' as index_url %}
+    {% url 'test' as test_url %}
+    {% url 'results' as results_url %}
+    <a {% if request.path == results_url %} class="active" {% endif %} href="{{ results_url }}">Results</a>
+    <a {% if request.path == test_url %} class="active" {% endif %} href="{{ test_url }}">Test</a>
+    <a {% if request.path == index_url %} class="active" {% endif %} href="{{ index_url }}">Home</a>
+
+</div>
+
+<div class="main-content" style="margin-top: 70px;">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

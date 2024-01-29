@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div style="width: 50%;">
+        <h1>Your results</h1>
+        {% if user.is_authenticated %}
+        {% include "results_table_template.html" with page_obj=page_user_obj page='page_user' %}
+        {% else %}
+        <a href="{% url 'login' %}?next={{ request.path }}"
+           style="font-size: 4em; text-decoration: none; color: #5555FF;">Login to see you results</a>
+        {% endif %}
+
+    </div>
+
+
+    <div style="width: 50%;">
+        <h1>All users results</h1>
+        {% include "results_table_template.html" with page_obj=page_all_obj page='page_all' %}
+    </div>
+</div>
+{% endblock %}

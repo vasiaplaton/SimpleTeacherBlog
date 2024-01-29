@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div style="width: 100%;">
+        <h2>Briefly about me</h2>
+        {% load static %}
+        <img class="my_img" src="{% static 'photo.jpg' %}">
+        <p>Hello. My name is bla-bla-bla and my teacher of Harvard University, Cambridge, Massachusetts, United
+            States</p>
+        <p>I'm very good at all</p>
+        <p>bla-bla-bla</p>
+    </div>
+
+    <div style="width: 100%;">
+
+        <h2>Top {{ num_students }} quotes from my students</h2>
+        {% for student in student_list %}
+        <blockquote class="blockquote blockquote-bordered">
+            <p class="blockquote_text">
+                {{ student.quote }}
+            </p>
+            <p class="blockquote_text-credit">
+                (c) {{ student.name }} {{ student.surname }}, {{ student.graduateDate }}
+            </p>
+        </blockquote>
+        <ul>
+
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

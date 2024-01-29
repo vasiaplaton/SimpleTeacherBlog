@@ -1,0 +1,11 @@
+kind: PodMonitor
+metadata:
+  name: teacher-app
+  labels:
+    team: frontend
+spec:
+  selector:
+    matchLabels:
+      app: teacher-app
+  podMetricsEndpoints:
+  - port: web

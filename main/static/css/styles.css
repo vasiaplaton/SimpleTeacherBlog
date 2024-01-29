@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+.main-content {
+ padding: 0 1em;
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 21px 23px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.top-user{
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 21px 23px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.top-header {
+ float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.my_img {
+ float: left;
+ margin: 0 15px 0 0;
+ width: 15%;
+ height: auto;
+
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blockquote{
+ max-width: 600px;
+ margin: 5px 10px;
+ padding: 25px;
+ background: #f8fffe;
+ border: 1px solid #b0d2cb;
+ color: #0b4237;
+ box-sizing: border-box;
+}
+
+.blockquote_text {
+font-family: serif;
+font-style: italic;
+font-size: 1.2em;
+line-height: 1.5;
+margin: 0;
+}
+
+.blockquote-bordered{
+border-left-width: 10px
+}
+
+.blockquote_text-credit{
+font-weight:bold;
+font-style:normal;
+text-align:right;
+}
+
+.result-text{
+font-size: 500px;
+font-weight:bold;
+}

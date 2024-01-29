@@ -1,0 +1,33 @@
+# Сообщаем Gitlab CI, что мы будем использовать Docker при сборке.
+image: docker:latest
+services:
+    - docker:dind
+
+# Описываем, из каких ступеней будет состоять наша непрерывная интеграция:
+#  - сборка Docker-образа,
+stages:
+    - build
+
+# Описываем инициализационные команды, которые необходимо запускать
+#  перед запуском каждой ступени.
+# Изменения, внесённые на каждой ступени, не переносятся на другие, так как запуск
+#  ступеней осуществляется в чистом Docker-контейнере, который пересоздаётся каждый раз.
+before_script:
+    # установка pip
+    - apk add --no-cache py-pip
+    # установка docker-compose
+    - pip install docker-compose==1.9.0
+    # логин в Gitlab Docker registry
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+variables:
+  CONTAINER_IMAGE: registry.gitlab.com/vasiaplaton/teacher/docker:$CI_BUILD_REF_NAME
+
+# Сборка Docker-образа
+build:
+    stage: build
+    script:
+      - export TAG=$CONTAINER_IMAGE
+      # собственно сборка
+      - docker-compose build
+      # отправка собранного в registry
+      - docker-compose push
